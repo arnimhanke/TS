@@ -1,0 +1,631 @@
+swagger: '2.0'
+info:
+  title: TSTool-service
+  version: 1.0.0
+produces:
+  - application/json
+schemes:
+  - http
+basePath: /TSTool-api
+
+
+paths:
+
+  ########################## TimeseriesValues ##########################
+  /timeseriesValuesByParameter:
+    post:
+      operationId: getTimeseriesValuesByAccessParameterValuesDto
+      summary: Get timeseries values for requested AccessParameterValuesDto
+      parameters:
+        - name: accessParameterValuesDto
+          in: body
+          schema:
+            $ref: '#/definitions/AccessParameterValuesDto'
+        - name: interval
+          in: query
+          type: string
+          format: interval
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: "#/definitions/Timeseries"
+        '401':
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        '404':
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+    put:
+      operationId: putTimeseriesValuesByPersistenceParameterValuesDto
+      summary: Adds values to given Timeseries. The Timeseries must exists!
+      parameters:
+        - name: persistenceParameterValuesDto
+          in: body
+          schema:
+            $ref: '#/definitions/PersistenceParameterValuesDto'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: "#/definitions/Timeseries"
+        '401':
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        '404':
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+    delete:
+      operationId: deleteTimeseriesValuesByDeleteParameterValuesDto
+      summary: Removes values of given Timeseries. The Timeseries must exists!
+      parameters:
+        - name: deleteParameterValuesDto
+          in: body
+          schema:
+            $ref: '#/definitions/DeleteParameterValuesDto'
+        - name: interval
+          in: query
+          type: string
+          format: interval
+      responses:
+        200:
+          description: OK
+        401:
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        404:
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+
+  /timeseriesValuesByParameters:
+    post:
+      operationId: getTimeseriesValuesByAccessParameterValuesDtos
+      summary: Get timeseries values for requested AccessParameterValuesDtos
+      parameters:
+        - name: accessParametersValuesDto
+          in: body
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/AccessParameterValuesDto"
+        - name: interval
+          in: query
+          type: string
+          format: interval
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Timeseries"
+        '401':
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        '404':
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+    put:
+      operationId: putTimeseriesValuesByPersistenceParameterValuesDtos
+      summary: Adds values to given Timeseries's. All Timeseries's must exists!
+      parameters:
+        - name: persistenceParametersValuesDto
+          in: body
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/PersistenceParameterValuesDto"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Timeseries"
+        '401':
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        '404':
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+    delete:
+      operationId: deleteTimeseriesValuesByDeleteParameterValuesDtos
+      summary: Removes values of given Timeseries. The Timeseries must exists!
+      parameters:
+        - name: deleteParametersValuesDto
+          in: body
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DeleteParameterValuesDto'
+        - name: interval
+          in: query
+          type: string
+          format: interval
+      responses:
+        200:
+          description: OK
+        401:
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        404:
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+
+
+
+  ########################## TimeseriesValues ##########################
+  /periodic/timeseriesValuesByParameter:
+    post:
+      operationId: getPeriodicTimeseriesValuesByAccessParameterValuesDto
+      summary: Get timeseries values for requested AccessParameterValuesDto
+      parameters:
+        - name: accessParameterValuesDto
+          in: body
+          schema:
+            $ref: '#/definitions/AccessParameterValuesDto'
+        - name: interval
+          in: query
+          type: string
+          format: interval
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: "#/definitions/PeriodicTimeseries"
+        '401':
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        '404':
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+    put:
+      operationId: putPeriodicTimeseriesValuesByPersistenceParameterValuesDto
+      summary: Adds values to given Timeseries. The Timeseries must exists!
+      parameters:
+        - name: persistenceParameterValuesDto
+          in: body
+          schema:
+            $ref: '#/definitions/PersistenceParameterValuesDto'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: "#/definitions/Timeseries"
+        '401':
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        '404':
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+
+  /periodic/timeseriesValuesByParameters:
+    post:
+      operationId: getPeriodicTimeseriesValuesByAccessParameterValuesDtos
+      summary: Get timeseries values for requested AccessParameterValuesDtos
+      parameters:
+        - name: accessParametersValuesDto
+          in: body
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/AccessParameterValuesDto"
+        - name: interval
+          in: query
+          type: string
+          format: interval
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/PeriodicTimeseries
+        '401':
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        '404':
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+    put:
+      operationId: putPeriodicTimeseriesValuesByPersistenceParameterValuesDtos
+      summary: Adds values to given Timeseries's. All Timeseries's must exists!
+      parameters:
+        - name: persistenceParametersValuesDto
+          in: body
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/PersistenceParameterValuesDto"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Timeseries"
+        '401':
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        '404':
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+
+
+
+
+  ########################## TimeseriesHead ##########################
+  /timeseriesDefinitionByParameter:
+    post:
+      operationId: getTimeseriesDefinitionByAccessParamterHeadDto
+      summary: Get timeseries-Definition for requested AccessParamterHeadDto
+      parameters:
+        - name: accessParamterHeadDto
+          in: body
+          schema:
+            $ref: '#/definitions/AccessParamterHeadDto'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: "#/definitions/TimeSeriesHead"
+        '401':
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        '404':
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+    put:
+      operationId: putTimeseriesDefinitionByPersistenceParameterHeadDto
+      summary: Create a new TimeseriesDefinition
+      parameters:
+        - name: persistenceParameterHeadDto
+          in: body
+          schema:
+            $ref: "#/definitions/PersistenceParameterHeadDto"
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: "#/definitions/TimeSeriesHead"
+        '401':
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        '404':
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+
+    delete:
+      operationId: deleteTimeseriesDefinitionByDeleteParameterHeadDto
+      summary: Removes timeseries head. The Timeseries must exists!
+      parameters:
+        - name: deleteParameterHeadDto
+          in: body
+          schema:
+            $ref: '#/definitions/DeleteParameterHeadDto'
+      responses:
+        200:
+          description: OK
+        401:
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        404:
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+  /timeseriesDefinitionByParameters:
+    post:
+      operationId: getTimeseriesDefinitionByAccessParamterHeadDtos
+      summary: Get timeseries-Definitions for requested AccessParamterHeadDtos
+      parameters:
+        - name: accessParamtersHeadDto
+          in: body
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AccessParamterHeadDto'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/TimeSeriesHead"
+        '401':
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        '404':
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+    put:
+      operationId: putTimeseriesDefinitionsByPersistenceParameterHeadDtos
+      summary: Create new TimeseriesDefinitions
+      parameters:
+        - name: persistenceParametersHeadDto
+          in: body
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/PersistenceParameterHeadDto"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/TimeSeriesHead"
+        '401':
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        '404':
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+
+    delete:
+      operationId: deleteTimeseriesDefinitionByDeleteParameterHeadDtos
+      summary: Removes timeseries heads. The Timeseries must exists!
+      parameters:
+        - name: deleteParametersHeadDto
+          in: body
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DeleteParameterHeadDto'
+      responses:
+        200:
+          description: OK
+        401:
+          description: unauthorized
+          schema:
+            $ref: "#/definitions/error"
+        404:
+          description: resource not found
+          schema:
+            $ref: "#/definitions/error"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/error"
+
+definitions:
+
+  ########################## Timeseries##########################
+  Timeseries:
+    type: object
+    properties:
+      timeSeriesHead:
+        $ref: '#/definitions/TimeSeriesHead'
+      timeSeriesValues:
+        type: array
+        items:
+          $ref: '#/definitions/TimeSeriesValue'
+
+  TimeSeriesValue:
+    type: object
+    properties:
+      time:
+        type: string
+        format: date
+      value:
+        type: number
+
+
+  ########################## PeriodicTimeseries ##########################
+  PeriodicTimeseries:
+    type: object
+    properties:
+      timeSeriesHead:
+        $ref: '#/definitions/TimeSeriesHead'
+      timeSeriesValues:
+        items:
+          $ref: '#/definitions/PeriodicTimeSeriesValue'
+  PeriodicTimeSeriesValue:
+    type: object
+    properties:
+      startTime:
+        type: string
+        format: date
+      value:
+        type: array
+        items:
+          type: "number"
+
+      ########################## Common Timeseries Things ##########################
+
+  TimeSeriesHead:
+    type: object
+    properties:
+      tsId:
+        type: string
+        description: Timeseries ID
+      database:
+        type: string
+        description: The Databasename, where the timeseries should be stored. The user must have access to this database, otherwise the timeseries can't be stored!
+      tsRaster:
+        $ref: '#/definitions/TimeSeriesRaster'
+      tsUnit:
+        $ref: '#/definitions/TimeSeriesUnit'
+
+  TimeSeriesComposedKey:
+    type: object
+    properties:
+      tsId:
+        type: string
+      databaseName:
+        type: string
+        description: The Databasename, where the timeseries should be stored. The user must have access to this database, otherwise the timeseries can't be stored!
+
+  AccessParameterValuesDto:
+    type: object
+    properties:
+      tsComposedKey:
+        $ref: '#/definitions/TimeSeriesComposedKey'
+      tsraster:
+        $ref: '#/definitions/TimeSeriesRaster'
+  AccessParamterHeadDto:
+    type: object
+    properties:
+      tsComposedKey:
+        $ref: '#/definitions/TimeSeriesComposedKey'
+
+  PersistenceParameterValuesDto:
+    type: object
+    properties:
+      tsComposedKey:
+        $ref: '#/definitions/TimeSeriesComposedKey'
+      tsvalues:
+        type: array
+        items:
+          $ref: '#/definitions/TimeSeriesValue'
+  PersistenceParameterHeadDto:
+    type: object
+    properties:
+      tsComposedKey:
+        $ref: '#/definitions/TimeSeriesComposedKey'
+      tsraster:
+        $ref: '#/definitions/TimeSeriesRaster'
+      tsUnit:
+        $ref: '#/definitions/TimeSeriesUnit'
+
+  DeleteParameterValuesDto:
+    type: object
+    properties:
+      tsId:
+        type: string
+      databaseName:
+        type: string
+
+  DeleteParameterHeadDto:
+    type: object
+    properties:
+      tsId:
+        type: string
+      databaseName:
+        type: string
+
+  TimeSeriesUnit:
+    type: string
+    enum:
+      - mW
+      - mWH
+      - kW
+      - kWH
+      - EUR
+      - GRADCELCIUS
+      - LITERPROMINUTE
+      - BAR
+      - STATUS
+      - STUNDEN
+      - MINUTEN
+      - SEKUNDEN
+      - PROZENT
+      - ANZAHL
+  TimeSeriesRaster:
+    type: string
+    enum:
+      - PT15M
+      - PT15S
+      - PT1H
+      - P1D
+
+  error:
+    type: object
+    required:
+      - message
+    properties:
+      code:
+        type: integer
+        format: int64
+      message:
+        type: string
+      fields:
+        type: string
